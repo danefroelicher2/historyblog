@@ -42,7 +42,7 @@ export default function SignIn() {
       // Get the full origin for the redirect URL
       const origin = window.location.origin;
       console.log("Using redirect URL:", `${origin}/auth/callback`);
-      
+
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
@@ -51,7 +51,7 @@ export default function SignIn() {
           data: {
             // Store additional user metadata if needed
             origin: origin,
-          }
+          },
         },
       });
 
@@ -59,11 +59,11 @@ export default function SignIn() {
 
       setMessage(
         "Please check your email for the confirmation link. " +
-        "Click the link in the email to complete your registration. " +
-        "If you don't see it, check your spam folder. " +
-        "If the confirmation link doesn't work, you can " +
-        "manually confirm your email by going to the " +
-        `<a href="/auth/manual-confirm" class="text-blue-700 underline">manual confirmation page</a>.`
+          "Click the link in the email to complete your registration. " +
+          "If you don't see it, check your spam folder. " +
+          "If the confirmation link doesn't work, you can " +
+          "manually confirm your email by going to the " +
+          `<a href="/auth/manual-confirm" class="text-blue-700 underline">manual confirmation page</a>.`
       );
     } catch (error: any) {
       setMessage(error.message || "An error occurred during sign up");
@@ -78,7 +78,7 @@ export default function SignIn() {
         <h1 className="text-3xl font-bold text-center mb-6">Account Access</h1>
 
         {message && (
-          <div 
+          <div
             className="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded mb-4"
             dangerouslySetInnerHTML={{ __html: message }}
           />
